@@ -1,0 +1,11 @@
+For our final model, we used a recurrant neural network using the keras library in python. We created 2 models, one to predict the valence of a message and one to predict the arousal of a message. We split the data into 2 sets, 80% for training and 20% for testing. We used a batch size of 32 and ran each model through 8 epochs. For our activation function, we used softmax and we used adam for the optimizer. The results we concluded with were not perfect but they were comparable to the paper we were basing this project off of.
+
+For valence, we got an accuracy of 39.90% with a correlation coefficient of 0.32.
+
+For arousal, we got an accuracy of 26.60% with a correlation coefficient of 0.22. 
+
+ At the bottom of the UpdatedRNN notebooks, there are also plots of the confusion matrix's that were created for both valence and arousal.
+
+ The reason that the accuracy is so low for these models, we discovered, was because our data was not diverse enough. The majority of the samples provided in thedataset had a valence rating from 4-6 and as such, we are seeing most of the predictions coming out in that same range with only a few exceptions for if the actual value was 1 or 9. The same goes for arousal, except arousal had a majority of values around 1-2 and therefore the predictions mostly centering around 1. This can be seen in a confusion matrix plot just showing the correctly predicted labels. These plots are also shown on the bottom of the notebook.
+
+ To fix this, there are a couple things that could be done as future work. The first thing would be to build a better dataset. This could be done by getting a more diverse range of messages that dont just center around a certain value. The second method that could be done is to somehow create a function to normalize the message values based on the popularity of them, meaning that all the labels for valence for example that are 5 (the most popular one), would have a lower weight so it wouldn't over power the ML model. 
